@@ -30,7 +30,7 @@ def convert_markdown_to_docx(markdown_file_path, output_docx_path):
     styles = doc.styles
     if "CodeBlock" not in styles:
         code_style = styles.add_style("CodeBlock", WD_STYLE_TYPE.PARAGRAPH)
-        code_style.font.name = "Courier New"
+        code_style.font.name = "Aptos Mono"
         code_style.font.size = Pt(10)
 
     with open(markdown_file_path, "r", encoding="utf-8", errors="ignore") as f:

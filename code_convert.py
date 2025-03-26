@@ -17,6 +17,16 @@ def save_config(data):
     """Save configuration to a local JSON file."""
     with open(CONFIG_FILE, "w", encoding="utf-8") as cf:
         json.dump(data, cf, indent=2)
+    strip_trailing_newlines(CONFIG_FILE)
+
+def strip_trailing_newlines(file_path):
+    """Remove trailing lines with only whitespace (spaces, tabs, or newlines) at the end of a file."""
+    with open(file_path, "r+", encoding="utf-8") as file:
+        content = file.read()
+        stripped_content = content.rstrip()  # Remove all trailing whitespace-only lines
+        file.seek(0)
+        file.write(stripped_content)
+        file.truncate()
 
 def _get_syntax_for_extension(extension):
     """Return a language name for syntax highlighting based on file extension."""
